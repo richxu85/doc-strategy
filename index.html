@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>DOC 22" Floor Cushion — 广告战略蓝图</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary: #1F4E78; --accent: #E91E63; --warning: #F57C00; --success: #2E7D32;
+  --bg: #F8F9FB; --surface: #FFFFFF; --text: #1A1A1A; --muted: #6B7280;
+  --border: #E5E7EB; --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  --grey: #6B7280; --beige: #B8A285; --yellow: #F4C430; --navy: #1B3A6B;
+  --turquoise: #2EC4B6; --green: #5BA85B; --pink: #E58CB7; --brown: #6F4E37;
+  --red: #C0392B; --coffee: #6F4E37; --blue: #3B82F6; --black: #000000; --white: #999;
+}
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+       background: var(--bg); color: var(--text); line-height: 1.55; padding: 0; }
+header { background: linear-gradient(135deg, #1F4E78 0%, #2C6CA8 100%); color: white;
+         padding: 36px 40px; box-shadow: var(--shadow); }
+header h1 { font-size: 28px; margin-bottom: 6px; font-weight: 700; }
+header .meta { opacity: 0.85; font-size: 14px; }
+nav { background: white; border-bottom: 2px solid var(--border); padding: 0 40px;
+      position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.04); }
+nav ul { display: flex; gap: 4px; flex-wrap: wrap; list-style: none; padding: 8px 0; }
+nav a { display: inline-block; padding: 8px 14px; color: var(--muted); text-decoration: none;
+        border-radius: 6px; font-size: 13px; font-weight: 500; }
+nav a:hover { background: var(--bg); color: var(--primary); }
+main { max-width: 1400px; margin: 0 auto; padding: 32px 40px; }
+section { background: white; border-radius: 12px; padding: 32px; margin-bottom: 24px;
+          box-shadow: var(--shadow); }
+section h2 { font-size: 22px; color: var(--primary); margin-bottom: 8px; }
+section .sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+.kpi { background: var(--bg); border-radius: 10px; padding: 18px; border-left: 4px solid var(--primary); }
+.kpi.warning { border-color: var(--warning); }
+.kpi.danger { border-color: var(--accent); }
+.kpi.success { border-color: var(--success); }
+.kpi .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.kpi .value { font-size: 28px; font-weight: 700; margin-top: 4px; color: var(--text); }
+.kpi .delta { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.alert { background: #FFF8E1; border-left: 5px solid var(--warning); padding: 18px 20px;
+         border-radius: 8px; margin-bottom: 18px; }
+.alert.danger { background: #FFEBEE; border-color: var(--accent); }
+.alert h3 { color: var(--accent); margin-bottom: 6px; font-size: 16px; }
+.alert p { font-size: 14px; color: var(--text); }
+.cluster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.asin-card { background: white; border: 1px solid var(--border); border-radius: 10px;
+             padding: 14px; transition: transform 0.15s, box-shadow 0.15s; }
+.asin-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.asin-card .swatch { display: inline-block; width: 18px; height: 18px; border-radius: 50%;
+                     vertical-align: middle; border: 2px solid white; box-shadow: 0 0 0 1px var(--border); }
+.asin-card .header-row { display: flex; justify-content: space-between; align-items: center;
+                          gap: 8px; margin-bottom: 6px; font-size: 13px; }
+.asin-card .asin { font-family: monospace; color: var(--primary); font-weight: 600; }
+.asin-card .price { background: var(--primary); color: white; padding: 2px 8px;
+                    border-radius: 4px; font-size: 12px; font-weight: 600; }
+.asin-card .sku { color: var(--muted); font-size: 11px; margin-bottom: 6px; }
+.asin-card .rev { font-size: 16px; font-weight: 700; color: var(--success); }
+.asin-card .meta { font-size: 11px; color: var(--muted); margin-top: 4px; }
+.asin-card .role-tag { font-size: 10px; padding: 2px 6px; border-radius: 4px;
+                       background: var(--bg); color: var(--muted); display: inline-block;
+                       margin-top: 4px; }
+.role-tag.broad { background: #E3F2FD; color: #1565C0; }
+.role-tag.long { background: #F3E5F5; color: #7B1FA2; }
+.role-tag.mixed { background: #FFF3E0; color: #E65100; }
+.cluster-section { margin-bottom: 32px; }
+.cluster-header { display: flex; justify-content: space-between; align-items: baseline;
+                  margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid var(--primary); }
+.cluster-header h3 { color: var(--primary); font-size: 18px; }
+.cluster-header .stats { font-size: 13px; color: var(--muted); }
+.competitor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                    gap: 14px; }
+.comp-card { background: #FFEBEE; border: 1px solid #FFCDD2; border-radius: 10px; padding: 14px; }
+.comp-card.self { background: #FFF8E1; border-color: #FFE082; }
+.comp-card .brand { font-weight: 700; color: var(--accent); font-size: 14px; }
+.comp-card.self .brand { color: var(--warning); }
+.comp-card .asin { font-family: monospace; font-size: 11px; color: var(--muted); }
+.comp-card .title { font-size: 12px; margin: 6px 0; color: var(--text); }
+.comp-card .stats { font-size: 11px; color: var(--muted); }
+.budget-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+.budget-table th { background: var(--primary); color: white; padding: 10px; text-align: left;
+                    font-size: 13px; }
+.budget-table td { padding: 10px; border-bottom: 1px solid var(--border); font-size: 13px; }
+.budget-table tr:hover { background: var(--bg); }
+.bar { height: 24px; background: var(--bg); border-radius: 4px; position: relative; overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), #4A90D9);
+             border-radius: 4px; display: flex; align-items: center; justify-content: flex-end;
+             padding-right: 8px; color: white; font-size: 11px; font-weight: 600; }
+.tier-stack { display: flex; flex-direction: column; gap: 8px; }
+.tier { display: flex; align-items: center; padding: 16px 18px; border-radius: 10px;
+        background: var(--bg); border-left: 6px solid var(--primary); }
+.tier .label { flex: 1; }
+.tier .label .name { font-weight: 700; font-size: 14px; color: var(--text); }
+.tier .label .desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.tier .budget { font-size: 18px; font-weight: 700; color: var(--primary); margin-left: 16px; }
+.tier .pct { font-size: 12px; color: var(--muted); }
+.tier-1 { border-color: #1F4E78; }
+.tier-2 { border-color: #E91E63; }
+.tier-3 { border-color: #2E7D32; }
+.tier-4 { border-color: #F57C00; }
+.tier-5 { border-color: #7B1FA2; }
+.tier-0 { border-color: #00838F; }
+.timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.tl-q { background: var(--bg); border-radius: 10px; padding: 16px; }
+.tl-q .q-name { font-weight: 700; color: var(--primary); font-size: 14px; }
+.tl-q .q-rev { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.tl-q ul { list-style: none; }
+.tl-q li { font-size: 12px; padding: 4px 0; border-bottom: 1px dashed var(--border); }
+.tl-q.peak { background: linear-gradient(135deg, #FFF8E1, #FFE082); }
+.tl-q.trough { background: linear-gradient(135deg, #FFEBEE, #FFCDD2); }
+.checklist li { padding: 8px 0; border-bottom: 1px solid var(--border); list-style: none;
+                display: flex; align-items: flex-start; gap: 10px; }
+.checklist .badge { font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: 600;
+                     flex-shrink: 0; }
+.badge.urgent { background: var(--accent); color: white; }
+.badge.high { background: var(--warning); color: white; }
+.badge.med { background: var(--primary); color: white; }
+.badge.low { background: var(--muted); color: white; }
+.kw-pool { background: var(--bg); padding: 10px; border-radius: 6px; font-family: monospace;
+           font-size: 12px; line-height: 1.8; margin-top: 8px; }
+.kw-pool .kw { display: inline-block; background: white; padding: 2px 8px; border-radius: 4px;
+                margin: 2px; border: 1px solid var(--border); }
+.flex-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+footer { text-align: center; padding: 30px; color: var(--muted); font-size: 12px; }
+.donut-wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.donut { width: 180px; height: 180px; }
+.donut-legend { font-size: 13px; }
+.donut-legend li { padding: 4px 0; display: flex; align-items: center; gap: 8px; }
+.donut-legend .dot { width: 14px; height: 14px; border-radius: 3px; }
+@media (max-width: 768px) {
+  main { padding: 16px; }
+  section { padding: 20px; }
+  header { padding: 24px; }
+  .timeline { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>DOC 22" Solid Floor Cushion — SPU 广告战略蓝图</h1>
+  <div class="meta">分析周期: 2025年4月 – 2026年3月  |  美国市场 (La-Fiore)  |  父ASIN: B09F8NSKC1  |  品牌: Degrees of Comfort</div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#overview">总览</a></li>
+    <li><a href="#self-target">⚠️ 自我投放</a></li>
+    <li><a href="#competitors">真竞品图谱</a></li>
+    <li><a href="#asin-clusters">ASIN 6 簇分类</a></li>
+    <li><a href="#architecture">5 层广告架构</a></li>
+    <li><a href="#budget">预算分配</a></li>
+    <li><a href="#cluster-tactics">分簇战术</a></li>
+    <li><a href="#content">内容产出</a></li>
+    <li><a href="#seasonal">季节策略</a></li>
+    <li><a href="#action">立即行动</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section id="overview">
+    <h2>战略总览</h2>
+    <div class="sub">从前两阶段调研出发，结合 Keepa 真身识别，形成完整的广告投放蓝图</div>
+    <div class="kpi-grid">
+      <div class="kpi success"><div class="label">全年广告销售</div><div class="value">$907K</div><div class="delta">ROAS 4.41x · ACOS 22.7%</div></div>
+      <div class="kpi"><div class="label">Halo 间接成交占比</div><div class="value">75.6%</div><div class="delta">不能只看直接 ROAS</div></div>
+      <div class="kpi danger"><div class="label">⚠️ 自我投放浪费</div><div class="value">$958</div><div class="delta">投在自己集团 Intelligent Design 品牌</div></div>
+      <div class="kpi success"><div class="label">真竞品识别</div><div class="value">87 个</div><div class="delta">HIGOGOGO 是 #1 竞品</div></div>
+      <div class="kpi warning"><div class="label">最大单点机会</div><div class="value">Meditation</div><div class="delta">市场份额 3% → 目标 6%</div></div>
+      <div class="kpi"><div class="label">SKU 战略簇</div><div class="value">6 类</div><div class="delta">45 个 ASIN 全归类</div></div>
+    </div>
+    <div style="margin-top: 24px;">
+      <strong>本报告解决三个问题：</strong>
+      <ol style="margin-left: 22px; margin-top: 6px; font-size: 14px;">
+        <li><strong>真身识别</strong>—— 用 Keepa API 把 PDA 投放对象的品牌/标题查清楚，分清 self / competitor</li>
+        <li><strong>广告策略架构</strong>—— 5 层广告架构 + 月度预算分配，哪些钱该花在哪</li>
+        <li><strong>SKU/ASIN 群 → 流量池匹配</strong>—— 6 个战略簇 × 颜色/长尾/场景维度，让对的 ASIN 出现在对的搜索词面前</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="self-target">
+    <h2>⚠️ 重大发现：自我投放浪费</h2>
+    <div class="sub">用 Keepa API 反查 PDA 目标 ASIN 真身后发现……</div>
+    <div class="alert danger">
+      <h3>13 个 PDA 投放对象的 manufacturer = "E&E Co. Ltd DBA JLA Home"（你们集团下另一个品牌 Intelligent Design）</h3>
+      <p>这意味着我们花了 <strong>$958</strong> 在自己集团下另一个品牌的 ASIN 详情页投了 PDA 广告。这虽然带来了一些转化（45+40+20+11+5 单 = 121 单），但形成的是<strong>集团内品牌互卷</strong>——把流量从 Intelligent Design 引到 Degrees of Comfort。这是好是坏，取决于你们对这两个品牌的内部定位（如果是分开 KPI 的两个独立品牌，那这是<strong>互相买流量</strong>的浪费；如果是同集团协同，可保留）。</p>
+    </div>
+    <div id="self-list" class="competitor-grid"></div>
+  </section>
+
+  <section id="competitors">
+    <h2>🎯 真竞品图谱</h2>
+    <div class="sub">87 个真正的竞品 ASIN，按品牌+花费排序</div>
+
+    <h3 style="margin-bottom: 14px;">Top 10 竞品品牌（按我们对其投放花费）</h3>
+    <div id="brands-list"></div>
+
+    <h3 style="margin-top: 30px; margin-bottom: 14px;">Top 15 竞品 ASIN 详情</h3>
+    <div id="comp-list" class="competitor-grid"></div>
+  </section>
+
+  <section id="asin-clusters">
+    <h2>🎨 ASIN 6 簇分类</h2>
+    <div class="sub">把 45 个子 ASIN 按战略角色 + 颜色/装数/价位 分到 6 个簇 —— 每个簇对应不同的流量池打法</div>
+    <div id="cluster-list"></div>
+  </section>
+
+  <section id="architecture">
+    <h2>🏗️ 5 层广告架构</h2>
+    <div class="sub">从大到小破解：每一层有自己的目标、KPI、预算、bid 策略</div>
+    <div class="tier-stack">
+      <div class="tier tier-0">
+        <div class="label">
+          <div class="name">Tier 0 — 品牌防御层</div>
+          <div class="desc">永远在「Degrees of Comfort」等品牌词上排第一。ROAS 12-27x，但绝对值小</div>
+        </div>
+        <div><div class="budget">$50</div><div class="pct">0.3%/月</div></div>
+      </div>
+      <div class="tier tier-1">
+        <div class="label">
+          <div class="name">Tier 1 — 头部防御层</div>
+          <div class="desc">SP exact match on head terms：floor cushions, floor pillow, floor cushion 等。Cluster A 三个 ASIN 主打</div>
+        </div>
+        <div><div class="budget">$5,000</div><div class="pct">29.4%/月</div></div>
+      </div>
+      <div class="tier tier-2">
+        <div class="label">
+          <div class="name">Tier 2 — Meditation 攻克层 (★ 重点)</div>
+          <div class="desc">单独 campaign 攻克 meditation cushion 市场缺口。Cluster B + C 中能打 meditation 的 ASIN 集中投</div>
+        </div>
+        <div><div class="budget">$2,500</div><div class="pct">14.7%/月</div></div>
+      </div>
+      <div class="tier tier-3">
+        <div class="label">
+          <div class="name">Tier 3 — Discovery & 收割层</div>
+          <div class="desc">SP auto loose/close + 每周从 ST report 把好词收割到精准 keyword。所有 ASIN 都参与</div>
+        </div>
+        <div><div class="budget">$4,000</div><div class="pct">23.5%/月</div></div>
+      </div>
+      <div class="tier tier-4">
+        <div class="label">
+          <div class="name">Tier 4 — 竞品狙击层 (PDA)</div>
+          <div class="desc">商品投放针对真竞品 ASIN。停止 self-target，集中火力打 HIGOGOGO 等真竞品</div>
+        </div>
+        <div><div class="budget">$2,000</div><div class="pct">11.8%/月</div></div>
+      </div>
+      <div class="tier tier-5">
+        <div class="label">
+          <div class="name">Tier 5 — 长尾色系/风格层</div>
+          <div class="desc">颜色/形状/材质细分词。Cluster B + C 按颜色对应投放。来自前两阶段 SQP 的「宝藏窄词」</div>
+        </div>
+        <div><div class="budget">$1,800</div><div class="pct">10.6%/月</div></div>
+      </div>
+      <div class="tier" style="border-color: #607D8B;">
+        <div class="label">
+          <div class="name">Tier 6 — Reach / Retargeting (SD)</div>
+          <div class="desc">Sponsored Display 用于 retargeting 已加购未购买、相似商品 lookalike。当前几乎未启用</div>
+        </div>
+        <div><div class="budget">$1,500</div><div class="pct">8.8%/月</div></div>
+      </div>
+      <div class="tier" style="border-color: #455A64;">
+        <div class="label">
+          <div class="name">SB Brand Ads</div>
+          <div class="desc">Sponsored Brand 视频 + headline。带 96.5% 新买家。增加视频版 SB</div>
+        </div>
+        <div><div class="budget">$650</div><div class="pct">3.8%/月</div></div>
+      </div>
+      <div class="tier" style="border-color: #9E9E9E;">
+        <div class="label">
+          <div class="name">Reserve / Testing</div>
+          <div class="desc">每月测试新 keyword 或 PDA 目标。固定 buffer</div>
+        </div>
+        <div><div class="budget">$500</div><div class="pct">2.9%/月</div></div>
+      </div>
+    </div>
+    <div style="margin-top: 18px; padding: 14px; background: var(--bg); border-radius: 8px;">
+      <strong>月度总预算：~$17,000</strong>（与当前年化花费 $205K 对齐）。Q3 旺季 +50% 至 $25,500/月，Q1 淡季维持最少 $13K/月（不能砍至 $9K，避免排名滑坡）
+    </div>
+  </section>
+
+  <section id="budget">
+    <h2>💰 月度预算分配（参考分配）</h2>
+    <div class="sub">基于全年 $205K 总预算，按渠道 × 季度精细化</div>
+    <table class="budget-table">
+      <thead><tr><th>层级</th><th>渠道 / 玩法</th><th>月度预算</th><th>占比</th><th>当前 vs 调整</th></tr></thead>
+      <tbody>
+        <tr><td>Tier 1</td><td>SP Keyword - 头部 exact</td><td>$5,000</td><td>29.4%</td><td>从 ~46% 下调，剩下分到长尾</td></tr>
+        <tr><td>Tier 2</td><td>★ SP - Meditation 专攻</td><td>$2,500</td><td>14.7%</td><td>新增专门 campaign，从 general 划过来</td></tr>
+        <tr><td>Tier 3</td><td>SP Auto + 收割</td><td>$4,000</td><td>23.5%</td><td>维持当前 ~40%</td></tr>
+        <tr><td>Tier 4</td><td>SP Product (PDA)</td><td>$2,000</td><td>11.8%</td><td>从 ~10% 上调，但停止 self-target</td></tr>
+        <tr><td>Tier 5</td><td>SP - 长尾色系/形状/风格</td><td>$1,800</td><td>10.6%</td><td>新增（之前散在 general 里）</td></tr>
+        <tr><td>Tier 6</td><td>SD Retargeting / Reach</td><td>$1,500</td><td>8.8%</td><td>★ 新启用（当前几乎为 0）</td></tr>
+        <tr><td>—</td><td>SB Brand Ads</td><td>$650</td><td>3.8%</td><td>维持 + 增加视频 SB</td></tr>
+        <tr><td>—</td><td>Brand Defense Tier 0</td><td>$50</td><td>0.3%</td><td>+50% placement modifier</td></tr>
+        <tr><td>—</td><td>Reserve / Testing</td><td>$500</td><td>2.9%</td><td>固定测试 buffer</td></tr>
+        <tr style="background: var(--primary); color: white;"><td colspan="2"><strong>月度总计</strong></td><td><strong>$17,000</strong></td><td><strong>100%</strong></td><td>年化 $204K（与当前对齐）</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 26px;">季度调节</h3>
+    <table class="budget-table">
+      <thead><tr><th>季度</th><th>月预算调整</th><th>重点</th></tr></thead>
+      <tbody>
+        <tr><td>Q2 (4-6月)</td><td>$17K (基线)</td><td>测试新词 + 头部 placement +30% 为旺季蓄势</td></tr>
+        <tr style="background: #FFF8E1;"><td>Q3 (7-9月) ★ 旺季</td><td><strong>$25.5K (+50%)</strong></td><td>SP exact + PDA 全开，SB 视频启动</td></tr>
+        <tr><td>Q4 (10-12月) 节日季</td><td>$18K</td><td>Coupon ≤10%，Q4 SP 维持，礼品长尾测试</td></tr>
+        <tr style="background: #FFEBEE;"><td>Q1 (1-3月) 淡季</td><td><strong>$13-15K (不可低于)</strong></td><td>收割 Q4 自动好词，listing 大改版</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="cluster-tactics">
+    <h2>🎯 6 簇 SKU/ASIN ↔ 流量池 匹配</h2>
+    <div class="sub">每个簇对应不同的关键词池、bid、匹配方式，让"对的 ASIN 出现在对的搜索词面前"</div>
+    <div id="tactics-list"></div>
+  </section>
+
+  <section id="content">
+    <h2>📷 内容产出 Checklist</h2>
+    <div class="sub">每个簇需要的图片/文案/视频 —— 给设计 / Lovart / 摄影团队的 brief</div>
+    <div class="flex-grid">
+      <div style="background: var(--bg); padding: 18px; border-radius: 10px;">
+        <h3 style="color: var(--primary);">A. 头部防御 (3 ASIN)</h3>
+        <ul class="checklist">
+          <li><span class="badge urgent">P0</span> 主图：客厅/卧室原生场景，灰/黄/单色为底</li>
+          <li><span class="badge high">P1</span> 图 5/6/7：尺寸图(22x22") + 材质特写(corduroy 织纹) + 放置场景</li>
+          <li><span class="badge high">P1</span> A+ 模块：refresh 季度，强化 "Solid Floor Cushion" 关键词</li>
+          <li><span class="badge med">P2</span> SB 视频：15s 横版，主推灰色 2 件套</li>
+        </ul>
+      </div>
+      <div style="background: var(--bg); padding: 18px; border-radius: 10px;">
+        <h3 style="color: var(--accent);">B. 长尾 Premium Pair (8 ASIN)</h3>
+        <ul class="checklist">
+          <li><span class="badge urgent">P0</span> 主图：把"两件套"叠放展示（强化 set value）</li>
+          <li><span class="badge urgent">P0</span> 图 5/6/7：冥想场景 / 阳台 yoga / 客厅地毯组合</li>
+          <li><span class="badge high">P1</span> A+ 模块：突出 meditation / yoga / dorm 场景</li>
+          <li><span class="badge high">P1</span> 标题/Bullet：加入 "meditation pillow", "zabuton style", "japanese floor cushion" 语义</li>
+          <li><span class="badge med">P2</span> 短视频 9:16：30 秒 day-in-life 冥想/阅读</li>
+        </ul>
+      </div>
+      <div style="background: var(--bg); padding: 18px; border-radius: 10px;">
+        <h3 style="color: var(--success);">C. 颜色专属 (8 ASIN)</h3>
+        <ul class="checklist">
+          <li><span class="badge urgent">P0</span> 主图：纯色背景，颜色饱和度高（pink/turquoise/brown 是颜色搜索热点）</li>
+          <li><span class="badge high">P1</span> 图 5/6：与同色系家具/装饰搭配 (boho 风、北欧风)</li>
+          <li><span class="badge med">P2</span> 标题加 "[color] floor pillow" 关键词</li>
+          <li><span class="badge low">P3</span> A+ 配色卡，引导用户选其他颜色</li>
+        </ul>
+      </div>
+      <div style="background: var(--bg); padding: 18px; border-radius: 10px;">
+        <h3 style="color: var(--warning);">D. 单装入门 (7 ASIN)</h3>
+        <ul class="checklist">
+          <li><span class="badge high">P1</span> 主图：单只展示 + 价格优势角标</li>
+          <li><span class="badge med">P2</span> 图 5：与 2 件套对比图（引导加购升级）</li>
+          <li><span class="badge low">P3</span> A+ 突出"轻便、单只够用、低价试水"</li>
+        </ul>
+      </div>
+      <div style="background: var(--bg); padding: 18px; border-radius: 10px;">
+        <h3 style="color: #7B1FA2;">E. 6件套高端 (13 ASIN)</h3>
+        <ul class="checklist">
+          <li><span class="badge urgent">P0</span> 标题/关键词大改：当前 0 SQP 流量 = 没被搜到</li>
+          <li><span class="badge urgent">P0</span> 主图：6 件套全展开 + 一片墙的 visual impact</li>
+          <li><span class="badge high">P1</span> A+ 强调"set", "bulk", "classroom", "dorm" 使用场景</li>
+          <li><span class="badge high">P1</span> 重新挂在头部父 ASIN 下作为变体（提升发现率）</li>
+        </ul>
+      </div>
+      <div style="background: var(--bg); padding: 18px; border-radius: 10px;">
+        <h3 style="color: #607D8B;">F. 2025 新品 (6 ASIN)</h3>
+        <ul class="checklist">
+          <li><span class="badge urgent">P0</span> Vine + Project X 起初步评论（30+评论才有 PPC 弹药）</li>
+          <li><span class="badge high">P1</span> Listing 完整化：标题、bullets、A+、图 7 张全配齐</li>
+          <li><span class="badge med">P2</span> 主图差异化：突出 "gusset 厚度" 或 "Ovya 设计感" 卖点</li>
+          <li><span class="badge low">P3</span> 跑 1-2 个月有自然流量后再上 SP auto loose</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 30px;">通用素材池 (建议本季度内补齐)</h3>
+    <div class="kw-pool" style="background: white; border: 1px solid var(--border);">
+      <strong>场景图：</strong>
+      <span class="kw">客厅地毯</span><span class="kw">卧室飘窗</span><span class="kw">阳台 yoga</span>
+      <span class="kw">儿童阅读角</span><span class="kw">大学宿舍</span><span class="kw">居家办公</span>
+      <span class="kw">和室榻榻米</span><span class="kw">日式 zabuton</span><span class="kw">冥想角</span>
+      <span class="kw">classroom</span><span class="kw">夜店/酒吧 lounge (boho)</span>
+      <br><br>
+      <strong>视频脚本（30 秒 9:16）：</strong>
+      <span class="kw">Morning meditation routine</span><span class="kw">Reading nook setup</span>
+      <span class="kw">Dorm decor haul</span><span class="kw">Pop of color in living room</span>
+    </div>
+  </section>
+
+  <section id="seasonal">
+    <h2>📅 季节性策略 Playbook</h2>
+    <div class="sub">基于第一阶段销售数据：Q3 占年营收 32%，Q1 仅 17%</div>
+    <div class="timeline">
+      <div class="tl-q">
+        <div class="q-name">Q2 (4-6 月) — 升势启动</div>
+        <div class="q-rev">营收 24% / 单月 ~$160K</div>
+        <ul>
+          <li>📦 库存：6 月中前到位，Q3 不能缺货</li>
+          <li>🎯 PPC: +20% 测试新词预算</li>
+          <li>🎨 Listing: 5 月 listing review，主图微调</li>
+          <li>🔍 Discovery: SP auto loose 加大力度跑词</li>
+          <li>💡 6 月头部大词 placement +30%（蓄势）</li>
+        </ul>
+      </div>
+      <div class="tl-q peak">
+        <div class="q-name">Q3 (7-9 月) ★ 旺季</div>
+        <div class="q-rev">营收 32% / 单月 ~$215K</div>
+        <ul>
+          <li>🚀 预算 +50% 至 $25.5K/月</li>
+          <li>🎬 SB 视频广告启动</li>
+          <li>🏫 8 月开学季前 2 周 placement 拉满</li>
+          <li>📸 主图换学生场景/书桌/dorm</li>
+          <li>🎯 PDA 火力全开攻 HIGOGOGO 等真竞品</li>
+          <li>💰 Tier 2 meditation 攻克最佳窗口</li>
+        </ul>
+      </div>
+      <div class="tl-q">
+        <div class="q-name">Q4 (10-12 月) — 节日季</div>
+        <div class="q-rev">营收 26% / 单月 ~$170K</div>
+        <ul>
+          <li>🎁 10 月: 测试 "gift", "set", "cute" 礼品类长尾</li>
+          <li>🛍️ 11 月: 黑五/Cyber Monday deal + coupon (≤10%)</li>
+          <li>🎄 12 月: 维持稳定，圣诞最后两周 PPC 收紧</li>
+          <li>📊 11 月 CVR 历史最高 (6.66%)，借势把 organic 排名巩固</li>
+        </ul>
+      </div>
+      <div class="tl-q trough">
+        <div class="q-name">Q1 (1-3 月) — 淡季</div>
+        <div class="q-rev">营收 17% / 单月 ~$115K</div>
+        <ul>
+          <li>⚠️ 不可砍至 $9K (会引发排名滑坡)</li>
+          <li>🌾 1 月: 收割 Q4 自动跑出的好词</li>
+          <li>🏷️ 2 月: 清仓促销 + 价格 A/B</li>
+          <li>🎨 3 月: Listing/A+ 大改版，为 Q2 重启</li>
+          <li>💎 全年最佳的 listing 优化窗口</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="action">
+    <h2>🚀 立即行动清单 (本月内)</h2>
+    <div class="sub">按优先级排序的具体动作</div>
+    <ul class="checklist">
+      <li><span class="badge urgent">P0</span><div><strong>停止 / 评估 self-PDA</strong>: 暂停所有 Intelligent Design (B0DM82RTNG, B0DM7XTRRQ, B07CZYMVVX 等 13 个) 的 PDA 投放. 与集团另一品牌方对齐：是协同策略还是误投？</div></li>
+      <li><span class="badge urgent">P0</span><div><strong>新建 Meditation Campaign</strong>: <code>DOC - Meditation - SP KW - Phrase/Exact</code>，仅 B09C1ZGB9P + B0B1954RV5 + B0BFDHCJR4，预算 $2.5K/月</div></li>
+      <li><span class="badge urgent">P0</span><div><strong>Listing 加 meditation 语义</strong>: Cluster B 8 个 ASIN 的标题 + bullet + A+ 加 meditation/zabuton/yoga 关键词覆盖</div></li>
+      <li><span class="badge urgent">P0</span><div><strong>Negative 浪费词</strong>: 把 40 inch / 40x40 / 25x25 / 30x30 / 36x36 / extra large / giant / moroccan / velvet 加到主推 SP campaign 的 negative</div></li>
+      <li><span class="badge high">P1</span><div><strong>抓宝藏 ROAS 28-75x 词</strong>: orange floor pillows, kotatsu cushion, indian floor pillows, navy blue floor pillows, japanese sitting pillow, buckwheat floor pillow 全部 exact match + bid $0.80-1.00</div></li>
+      <li><span class="badge high">P1</span><div><strong>降 bid 高 ACOS 词</strong>: classroom / yoga / large cushion / velvet 系列 ACOS&gt;50% 的词 bid 降 30-50%</div></li>
+      <li><span class="badge high">P1</span><div><strong>Brand Defense 加码</strong>: degrees of comfort 系列 placement modifier 拉到 +50%</div></li>
+      <li><span class="badge high">P1</span><div><strong>PDA 集中火力打 HIGOGOGO</strong>: B0F6YMT8TM 当前 ROAS 5.69x，扩 bid 30%；新加 B0F6YN42FD（ROAS 11.93x）批量扩</div></li>
+      <li><span class="badge med">P2</span><div><strong>启动 SD Retargeting</strong>: 对已加购未购买、相似商品 lookalike 的用户做 reach</div></li>
+      <li><span class="badge med">P2</span><div><strong>Vine on Cluster B 缺评论 ASIN</strong>: B0BFDHCJR4, B0BKH6JY2Z, B0BW31QLDW（高营收+1-3 评论）</div></li>
+      <li><span class="badge med">P2</span><div><strong>6 件套 listing 大改</strong>: 13 个 $119.99 ASIN 当前 0 SQP 流量，需重写标题/A+/重挂父 ASIN 变体</div></li>
+      <li><span class="badge med">P2</span><div><strong>Q1 淡季预算守底</strong>: 2 月预算最少 $13K，不可低于（数据已证明砍预算 → 排名滑坡）</div></li>
+      <li><span class="badge low">P3</span><div><strong>SB 视频广告测试</strong>: 制作 15s 横版视频上 SB Q2 启动</div></li>
+      <li><span class="badge low">P3</span><div><strong>每月清理 PDA 0 单目标</strong>: 维护 PDA winners 列表 (top 10)，不在列表的快速暂停</div></li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p>本报告整合 SQP 月度数据 + 销售报表 + 广告活动/投放/搜索词报表 + Keepa API 真身识别. 数据周期 2025-04 至 2026-03.</p>
+  <p>对应 Excel 配套文件: <code>SPU广告战略蓝图_DOC地板坐垫.xlsx</code></p>
+</footer>
+
+<script>
+const DATA = {"our": [{"ASIN": "B09C1ZGB9P", "SKU": "DC31-0508", "avg_price": 44.8025, "revenue": 227388.89, "units": 5157, "rev_share": 0.11457672993252146, "role": "broad-keyword hunter", "image": "", "title": "Meditation Floor Pillow Set of 2, Square Large Pillows Seating for Adults, Tufted Corduroy Cushion for Reading Nook, Classroom and Living Room, Grey, 22x22 Inch", "color": "grey", "pack": 2, "material": "corduroy", "theme": "meditation", "cluster": "A. Head Defense (头部防御)"}, {"ASIN": "B0B195QT96", "SKU": "DC31-0537", "avg_price": 50.865, "revenue": 131700.32, "units": 2669, "rev_share": 0.06636116653134044, "role": "mixed", "image": "", "title": "Meditation Floor Pillow Set of 2, Round Large Pillows Seating for Adults, Tufted Corduroy Cushion for Tatami Living Room, Grey, 22 Inch", "color": "grey", "pack": 2, "material": "corduroy", "theme": "meditation", "cluster": "B. Long-tail Premium Pair (长尾premium pair)"}, {"ASIN": "B0BW31QLDW", "SKU": "DC31-0538", "avg_price": 54.3025, "revenue": 127536.88, "units": 2388, "rev_share": 0.06426329209046404, "role": "long-tail specialist", "image": "", "title": "Meditation Floor Pillow Set of 2, Round Large Pillows Seating for Adults, Tufted Corduroy Cushion for Living Room Tatami, Beige 22 Inch", "color": "beige", "pack": 2, "material": "corduroy", "theme": "meditation", "cluster": "B. Long-tail Premium Pair (长尾premium pair)"}, {"ASIN": "B09C1ZNGNY", "SKU": "DC31-0501", "avg_price": 26.906666666666666, "revenue": 125863.18, "units": 4772, "rev_share": 0.06341994801640632, "role": "broad-keyword hunter", "image": "", "title": "Degrees of Comfort Meditation Floor Pillow, Square Large Pillows Seating for Adults, Gray Tufted Corduroy Cushions for Yoga Reading Nook, Classroom and Living Room, Grey, 22x22 Inch", "color": "grey", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "A. Head Defense (头部防御)"}, {"ASIN": "B0BHZF2RPL", "SKU": "DC31-0540", "avg_price": 52.719166666666666, "revenue": 110588.46, "units": 2136, "rev_share": 0.05572332102537399, "role": "mixed", "image": "", "title": "Floor Cushion Pillow Set of 2, Round Large Pillows Seating for Adults, Tufted Corduroy Cushions for Living Room Tatami, Orange Yellow, 22 Inch", "color": "yellow", "pack": 2, "material": "corduroy", "theme": "meditation", "cluster": "B. Long-tail Premium Pair (长尾premium pair)"}, {"ASIN": "B09C21BQRG", "SKU": "DC31-0510", "avg_price": 49.781666666666666, "revenue": 108710.97, "units": 2229, "rev_share": 0.05477729123174154, "role": "long-tail specialist", "image": "", "title": "Degrees of Comfort Meditation Floor Pillow Set of 2, Square Large Pillows Seating for Adults, Tufted Corduroy Cushions for Living Room Tatami, Memory Foam Added, Navy Blue, 22x22 Inch", "color": "navy", "pack": 2, "material": "corduroy", "theme": "meditation", "cluster": "B. Long-tail Premium Pair (长尾premium pair)"}, {"ASIN": "B0B1954RV5", "SKU": "DC31-0539", "avg_price": 54.219166666666666, "revenue": 103272.83, "units": 1948, "rev_share": 0.052037120864951665, "role": "long-tail specialist", "image": "", "title": "Floor Cushion Pillow Set of 2, Round Large Pillows Seating for Adults, Tufted Corduroy Cushions for Living Room Tatami, Navy Blue, 22 Inch", "color": "navy", "pack": 2, "material": "corduroy", "theme": "meditation", "cluster": "B. Long-tail Premium Pair (长尾premium pair)"}, {"ASIN": "B0BKH6JY2Z", "SKU": "DC31-0542", "avg_price": 55.95666666666667, "revenue": 96807.85, "units": 1748, "rev_share": 0.048779546286531625, "role": "long-tail specialist", "image": "", "title": "Meditation Floor Pillow Set of 2, Square Large Pillows Seating for Adults, Tufted Corduroy Cushion for Living Room Tatami, Coffee Brown 22x22 Inch", "color": "brown", "pack": 2, "material": "corduroy", "theme": "meditation", "cluster": "B. Long-tail Premium Pair (长尾premium pair)"}, {"ASIN": "B09C1WWWDR", "SKU": "DC31-0511", "avg_price": 49.32333333333333, "revenue": 95178.81, "units": 1941, "rev_share": 0.04795870549642409, "role": "broad-keyword hunter", "image": "", "title": "Degrees of Comfort Meditation Floor Pillow Set of 2, Square Large Pillows Seating for Adults, Tufted Corduroy Cushions for Balcony Outdoor Tatami Living Room, Orange Yellow, 22x22", "color": "yellow", "pack": 2, "material": "corduroy", "theme": "meditation", "cluster": "A. Head Defense (头部防御)"}, {"ASIN": "B0BFDHCJR4", "SKU": "DC31-0544", "avg_price": 54.13583333333333, "revenue": 88072.48, "units": 1664, "rev_share": 0.04437796743476516, "role": "long-tail specialist", "image": "", "title": "Meditation Floor Pillow Set of 2, Square Large Pillows Seating for Adults, Tufted Corduroy Cushion for Living Room Tatami, Green 22x22 Inch", "color": "green", "pack": 2, "material": "corduroy", "theme": "meditation", "cluster": "B. Long-tail Premium Pair (长尾premium pair)"}, {"ASIN": "B09C1XS8DF", "SKU": "DC31-0509", "avg_price": 49.3525, "revenue": 83134.34, "units": 1688, "rev_share": 0.041889737103243764, "role": "long-tail specialist", "image": "", "title": "Meditation Floor Pillow Set of 2, Square Large Pillows Seating for Adults, Tufted Corduroy Cushion for Balcony Outdoor Tatami Living Room, Beige, 22x22 Inch", "color": "beige", "pack": 2, "material": "corduroy", "theme": "meditation", "cluster": "B. Long-tail Premium Pair (长尾premium pair)"}, {"ASIN": "B09C1WYJM5", "SKU": "DC31-0504", "avg_price": 29.269166666666663, "revenue": 61885.840000000004, "units": 2173, "rev_share": 0.031183041424439135, "role": "mixed", "image": "", "title": "Degrees of Comfort Square Large Pillows Seating for Adults, Tufted Corduroy Floor Cushions for Living Room Tatami, Navy Blue, 22x22 Inch", "color": "navy", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "D. Budget Singles (单装入门款)"}, {"ASIN": "B0B196MNHP", "SKU": "DC31-0536", "avg_price": 50.910833333333336, "revenue": 54916.17, "units": 1097, "rev_share": 0.027671163613219786, "role": "long-tail specialist", "image": "", "title": "Meditation Floor Pillow Set of 2, Round Large Pillows Seating for Adults, Tufted Corduroy Thick Cushion for Living Room Tatami, Turquoise, 22 Inch'2 Count (Pack of 1)", "color": "turquoiseuois", "pack": 2, "material": "corduroy", "theme": "meditation", "cluster": "C. Color Specialists (颜色专属)"}, {"ASIN": "B0BW2ZGLPH", "SKU": "DC31-0533", "avg_price": 30.49, "revenue": 54361.28, "units": 1828, "rev_share": 0.027391565600879533, "role": "long-tail specialist", "image": "", "title": "Degrees of Comfort Meditation Floor Pillow, Round Large Pillows Seating for Adults, Tufted Corduroy Cushion for Living Room Tatami, Beige 22 Inch", "color": "beige", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "C. Color Specialists (颜色专属)"}, {"ASIN": "B09C1YC8B2", "SKU": "DC31-0503", "avg_price": 28.698333333333334, "revenue": 50487.69, "units": 1807, "rev_share": 0.025439740798448265, "role": "mixed", "image": "", "title": "Degrees of Comfort Meditation Floor Pillow, Square Large Pillows Seating for Adults, Tufted Corduroy Cushion for Balcony Bedroom Tatami Living Room, Beige, 22x22 Inch", "color": "beige", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "D. Budget Singles (单装入门款)"}, {"ASIN": "B09C1XLGQL", "SKU": "DC31-0507", "avg_price": 49.781666666666666, "revenue": 42452.38, "units": 878, "rev_share": 0.021390908228861905, "role": "mixed", "image": "", "title": "Meditation Floor Pillow Set of 2, Square Large Pillows Seating for Adults, Tufted Corduroy Cushion for Living Room Tatami, Turquoise, 22x22 Inch", "color": "turquoiseuois", "pack": 2, "material": "corduroy", "theme": "meditation", "cluster": "C. Color Specialists (颜色专属)"}, {"ASIN": "B0B195GWFB", "SKU": "DC31-0532", "avg_price": 29.115, "revenue": 40314.770000000004, "units": 1400, "rev_share": 0.020313809151281396, "role": "long-tail specialist", "image": "", "title": "Degrees of Comfort Meditation Floor Pillow, Round Large Pillows Seating for Adults, Tufted Corduroy Cushion for Tatami Living Room, Grey, 22 Inch", "color": "grey", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "D. Budget Singles (单装入门款)"}, {"ASIN": "B0BKH6596R", "SKU": "DC31-0541", "avg_price": 32.0775, "revenue": 39571.82, "units": 1253, "rev_share": 0.019939451452875956, "role": "long-tail specialist", "image": "", "title": "Meditation Floor Pillow, Square Large Pillows Seating for Adults, Tufted Corduroy Floor Cushion for Living Room Tatami, Coffee Brown 22x22 Inch, 1 Count (Pack of 1)", "color": "brown", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "C. Color Specialists (颜色专属)"}, {"ASIN": "B0BYQNSCMJ", "SKU": "DC31-0546", "avg_price": 54.32333333333333, "revenue": 38121.270000000004, "units": 712, "rev_share": 0.01920854821655857, "role": "long-tail specialist", "image": "", "title": "Pink Floor Pillow Set of 2 – Stylish Corduroy Cushions for Women, Perfect for Meditation, Yoga, and Relaxation, 22x22 Inch", "color": "pink", "pack": 2, "material": "corduroy", "theme": "meditation", "cluster": "C. Color Specialists (颜色专属)"}, {"ASIN": "B0B1943X6M", "SKU": "DC31-0534", "avg_price": 29.769166666666663, "revenue": 36803.28, "units": 1257, "rev_share": 0.018544439322391557, "role": "long-tail specialist", "image": "", "title": "Degrees of Comfort Floor Cushion Pillow, Round Large Pillows Seating for Adults, Tufted Corduroy Floor Cushions for Living Room Tatami, Navy Blue, 22 Inch Single, 1 Count (Pack of 1)", "color": "navy", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "D. Budget Singles (单装入门款)"}, {"ASIN": "B09C1XJ7K8", "SKU": "DC31-0500", "avg_price": 27.948333333333334, "revenue": 32700.28, "units": 1197, "rev_share": 0.016477019392978402, "role": "broad-keyword hunter", "image": "", "title": "Degrees of Comfort Meditation Floor Pillow, Square Large Pillows Seating for Adults, Tufted Corduroy Thick Cushion for Living Room Tatami, Turquoise, 22x22 Inch", "color": "turquoiseuois", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "D. Budget Singles (单装入门款)"}, {"ASIN": "B09C1YSTDD", "SKU": "DC31-0506", "avg_price": 27.99, "revenue": 32063.14, "units": 1156, "rev_share": 0.016155977244836483, "role": "mixed", "image": "", "title": "Degrees of Comfort Meditation Floor Pillow, Square Large Pillows Seating for Adults, Tufted Corduroy Cushion for Living Room Tatami, Orange Yellow 22x22 Inch", "color": "yellow", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "D. Budget Singles (单装入门款)"}, {"ASIN": "B0BFDJTZ8V", "SKU": "DC31-0543", "avg_price": 30.415000000000003, "revenue": 31540.07, "units": 1054, "rev_share": 0.015892412696340712, "role": "long-tail specialist", "image": "", "title": "Degrees of Comfort Meditation Floor Pillow, Square Large Pillows Seating for Adults, Tufted Corduroy Cushion for Living Room Tatami, Green 22x22 Inch", "color": "green", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "C. Color Specialists (颜色专属)"}, {"ASIN": "B0BYQ9BZ9H", "SKU": "DC31-0545", "avg_price": 33.61083333333334, "revenue": 28865.85, "units": 880, "rev_share": 0.014544926534109359, "role": "long-tail specialist", "image": "", "title": "Meditation Floor Pillow Pink, Square Large Pillows Seating for Adults, Tufted Corduroy Cushion for Living Room Tatami, 22x22 Inch, 1 Count (Pack of 1)", "color": "pink", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "C. Color Specialists (颜色专属)"}, {"ASIN": "B0BHZFXGC8", "SKU": "DC31-0535", "avg_price": 28.419166666666666, "revenue": 27710.32, "units": 975, "rev_share": 0.013962677996201784, "role": "mixed", "image": "", "title": "Degrees of Comfort Meditation Floor Pillow, Round Large Pillows Seating for Adults, Tufted Corduroy Cushion for Tatami Living Room, Orange Yellow 22 Inch", "color": "yellow", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "D. Budget Singles (单装入门款)"}, {"ASIN": "B0B19576KD", "SKU": "DC31-0531", "avg_price": 30.115, "revenue": 21186.87, "units": 743, "rev_share": 0.01067564155005744, "role": "long-tail specialist", "image": "", "title": "Degrees of Comfort Meditation Floor Pillow, Round Large Pillows Seating for Adults, Tufted Corduroy Thick Cushion for Living Room Tatami, Turquoise, 22 Inch Single", "color": "turquoiseuois", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "C. Color Specialists (颜色专属)"}, {"ASIN": "B0DYG2ZSGD", "SKU": "DOC31-0947", "avg_price": 47.945454545454545, "revenue": 19268.67, "units": 375, "rev_share": 0.00970909879875344, "role": "low-volume / new", "image": "", "title": "Degrees of Comfort Square Tufted Corduroy Floor Cushions, Large Pillows Seating for Adults, Meditation Pillow for Balcony Tatami Living Room, 22x22 Inch, Purple", "color": "", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "F. 2025 New Launch (2025新品线)"}, {"ASIN": "B0DYG3H118", "SKU": "DOC31-0946", "avg_price": 29.435555555555556, "revenue": 8991.49, "units": 280, "rev_share": 0.004530632615432387, "role": "low-volume / new", "image": "", "title": "Degrees of Comfort Floor Cushion 22: Square Purple 22x22x4 Gusset Square-1PK", "color": "", "pack": 1, "material": "", "theme": "gusset", "cluster": "F. 2025 New Launch (2025新品线)"}, {"ASIN": "B0D32488TC", "SKU": "DOC31-0827", "avg_price": 119.99, "revenue": 6479.34, "units": 54, "rev_share": 0.0032648102962329582, "role": "unknown", "image": "", "title": "Degrees of Comfort Floor Cushion 6 Pack for Meditation, Office & Classroom – Corduroy Soft Seating Set, 22 Inch, High-Density Foam, Square Shape, Grey", "color": "grey", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "E. 6-pack Premium (6件套高端组合)"}, {"ASIN": "B0D323MDRR", "SKU": "DOC31-0829", "avg_price": 119.99, "revenue": 6119.3099999999995, "units": 51, "rev_share": 0.0030833983544375355, "role": "unknown", "image": "", "title": "Degrees of Comfort Floor Cushion 6 Pack for Meditation, Office & Classroom – Corduroy Soft Seating Set, 22 Inch, High-Density Foam, Square Shape, Navy", "color": "navy", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "E. 6-pack Premium (6件套高端组合)"}, {"ASIN": "B0D324V2GG", "SKU": "DOC31-0839", "avg_price": 119.98999999999998, "revenue": 5279.4800000000005, "units": 44, "rev_share": 0.0026602247547984795, "role": "unknown", "image": "", "title": "Degrees of Comfort Floor Cushion 6 Pack for Meditation, Office & Classroom – Corduroy Soft Seating Set, 22 Inch, High-Density Foam, Round Shape, Beige", "color": "beige", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "E. 6-pack Premium (6件套高端组合)"}, {"ASIN": "B0D325K9YB", "SKU": "DOC31-0831", "avg_price": 119.99, "revenue": 5279.48, "units": 44, "rev_share": 0.002660224754798479, "role": "unknown", "image": "", "title": "Degrees of Comfort Floor Cushion 6 Pack for Meditation, Office & Classroom – Corduroy Soft Seating Set, 22 Inch, High-Density Foam, Square Shape, Beige", "color": "beige", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "E. 6-pack Premium (6件套高端组合)"}, {"ASIN": "B0D323P5ZH", "SKU": "DOC31-0835", "avg_price": 119.99, "revenue": 5279.44, "units": 44, "rev_share": 0.0026602045995956576, "role": "unknown", "image": "", "title": "Degrees of Comfort Floor Cushion 6 Pack for Meditation, Office & Classroom – Corduroy Soft Seating Set, 22 Inch, High-Density Foam, Round Shape, Grey", "color": "grey", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "E. 6-pack Premium (6件套高端组合)"}, {"ASIN": "B0D3WS1XW4", "SKU": "DOC31-0813", "avg_price": 24.99, "revenue": 4247.85, "units": 173, "rev_share": 0.0021404069576304334, "role": "unknown", "image": "", "title": "Degrees of Comfort Meditation Floor Pillow, Square Large Pillows Seating for Adults, Red Tufted Corduroy Cushions for Outdoor Yoga Tatami Fireplace Living Room, Red, 22x22 Inch", "color": "red", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "F. 2025 New Launch (2025新品线)"}, {"ASIN": "B0D3254328", "SKU": "DOC31-0834", "avg_price": 119.98999999999998, "revenue": 4199.59, "units": 35, "rev_share": 0.0021160897054263196, "role": "unknown", "image": "", "title": "Degrees of Comfort Floor Cushion 6 Pack for Meditation, Office & Classroom – Corduroy Soft Seating Set, 22 Inch, High-Density Foam, Square Shape, Coffee", "color": "coffee", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "E. 6-pack Premium (6件套高端组合)"}, {"ASIN": "B0D325PS5F", "SKU": "DOC31-0837", "avg_price": 119.99, "revenue": 4079.59, "units": 34, "rev_share": 0.002055624096961884, "role": "unknown", "image": "", "title": "Degrees of Comfort Floor Cushion 6 Pack for Meditation, Office & Classroom – Corduroy Soft Seating Set, 22 Inch, High-Density Foam, Round Shape, Navy", "color": "navy", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "E. 6-pack Premium (6件套高端组合)"}, {"ASIN": "B0D323B6RS", "SKU": "DOC31-0833", "avg_price": 119.99, "revenue": 4079.59, "units": 34, "rev_share": 0.002055624096961884, "role": "unknown", "image": "", "title": "Degrees of Comfort Floor Cushion 6 Pack for Meditation, Office & Classroom – Corduroy Soft Seating Set, 22 Inch, High-Density Foam, Square Shape, Green", "color": "green", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "E. 6-pack Premium (6件套高端组合)"}, {"ASIN": "B0D324WGRH", "SKU": "DOC31-0830", "avg_price": 119.99, "revenue": 3919.6, "units": 33, "rev_share": 0.0019750083244766754, "role": "unknown", "image": "", "title": "Degrees of Comfort Floor Cushion 6 Pack for Meditation, Office & Classroom – Corduroy Soft Seating Set, 22 Inch, High-Density Foam, Square Shape, Yellow", "color": "yellow", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "E. 6-pack Premium (6件套高端组合)"}, {"ASIN": "B0D3251JD2", "SKU": "DOC31-0828", "avg_price": 119.99, "revenue": 3119.66, "units": 26, "rev_share": 0.0015719345008513384, "role": "unknown", "image": "", "title": "Degrees of Comfort Floor Cushion 6 Pack for Meditation, Office & Classroom – Corduroy Soft Seating Set, 22 Inch, High-Density Foam, Square Shape, Turquoise", "color": "turquoiseuois", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "E. 6-pack Premium (6件套高端组合)"}, {"ASIN": "B0D32544MH", "SKU": "DOC31-0836", "avg_price": 119.99, "revenue": 2879.69, "units": 24, "rev_share": 0.0014510184003245837, "role": "unknown", "image": "", "title": "Degrees of Comfort Floor Cushion 6 Pack for Meditation, Office & Classroom – Corduroy Soft Seating Set, 22 Inch, High-Density Foam, Round Shape, Turquoise", "color": "turquoiseuois", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "E. 6-pack Premium (6件套高端组合)"}, {"ASIN": "B0D323M715", "SKU": "DOC31-0838", "avg_price": 119.99, "revenue": 2759.68, "units": 23, "rev_share": 0.0013905477530594427, "role": "unknown", "image": "", "title": "Degrees of Comfort Floor Cushion 6 Pack for Meditation, Office & Classroom – Corduroy Soft Seating Set, 22 Inch, High-Density Foam, Round Shape, Yellow", "color": "yellow", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "E. 6-pack Premium (6件套高端组合)"}, {"ASIN": "B0FQMR2VT7", "SKU": "DOC31-1019", "avg_price": 21.282, "revenue": 2647.89, "units": 101, "rev_share": 0.0013342189999741157, "role": "unknown", "image": "", "title": "Degrees of Comfort Square Floor Cushion for Adults – Soft Velvet Meditation Pillow – Thick Tatami Seating Pad for Winter Home – 22” x 22”, Brushed Chevron, 1 Pack", "color": "", "pack": 1, "material": "velvet", "theme": "meditation", "cluster": "F. 2025 New Launch (2025新品线)"}, {"ASIN": "B0D3WG47DQ", "SKU": "DOC31-0814", "avg_price": 45.656666666666666, "revenue": 2136.4599999999996, "units": 47, "rev_share": 0.0010765196154993973, "role": "unknown", "image": "", "title": "Degrees of Comfort Memory Foam Meditation Floor Pillow Set of 2, Square Large Pillows Seating for Adults, Tufted Corduroy Cushion for Living Room Tatami, Red, 22x22 Inch", "color": "red", "pack": 2, "material": "corduroy", "theme": "meditation", "cluster": "F. 2025 New Launch (2025新品线)"}, {"ASIN": "B0D324N48B", "SKU": "DOC31-0832", "avg_price": 119.99, "revenue": 1439.85, "units": 12, "rev_share": 0.0007255117195626445, "role": "unknown", "image": "", "title": "Degrees of Comfort Floor Cushion 6 Pack for Meditation, Office & Classroom – Corduroy Soft Seating Set, 22 Inch, High-Density Foam, Square Shape, Pink", "color": "pink", "pack": 1, "material": "corduroy", "theme": "meditation", "cluster": "E. 6-pack Premium (6件套高端组合)"}, {"ASIN": "B0FQNBCPVL", "SKU": "DOC31-1018", "avg_price": 25.392, "revenue": 1156.53, "units": 36, "rev_share": 0.0005827524179781125, "role": "unknown", "image": "", "title": "Degrees of Comfort Plush Floor Cushion for Adults – Faux Fur Meditation Pillow – Soft Winter Tatami Seating Pad – 22” Square, Light Grey, 1 Pack", "color": "grey", "pack": 1, "material": "fur", "theme": "meditation", "cluster": "F. 2025 New Launch (2025新品线)"}], "competitors": [{"asin": "B0F6YMT8TM", "classification": "competitor", "brand": "HIGOGOGO", "manufacturer": "HIGOGOGO", "title": "HIGOGOGO Floor Pillow Cushion for Adults, Meditation Cushion Pillow, Large Square Floor Sitting, Tufted Corduroy Cover, for Tatami Living Room or Yoga, 22x22 Inch, Dark Grey", "image_url": "", "parent_asin": "B0F6YGP5YL", "package_qty": -1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 871.94, "pda_orders": 93.0, "st_spend": 609.86, "st_orders": 70.0, "total_spend": 1481.8000000000002, "total_orders": 163.0}, {"asin": "B0F6YN42FD", "classification": "competitor", "brand": "HIGOGOGO", "manufacturer": "HIGOGOGO", "title": "HIGOGOGO Floor Pillow Cushion for Adults, Meditation Cushion Pillow, Large Square Floor Sitting, Tufted Corduroy Cover, for Tatami Living Room or Yoga, 22x22 Inch, 2Pack, Dark Grey", "image_url": "", "parent_asin": "B0F6YGP5YL", "package_qty": -1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 44.42, "pda_orders": 6.0, "st_spend": 36.21, "st_orders": 3.0, "total_spend": 80.63, "total_orders": 9.0}, {"asin": "B0D2QKCKFT", "classification": "competitor", "brand": "BALAPET", "manufacturer": "BALAPET", "title": "BALAPET Floor Lounger Pillow,Foldable Light Thick Tufted Floor Pillow Cushion with Elasticized Webbing for Easy Storage.Floor Lounger for Meditation,Playing,Yoga,Reading,Sleeping(Beige White)", "image_url": "", "parent_asin": "B0D2QYS1G4", "package_qty": -1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 0.0, "pda_orders": 0.0, "st_spend": 68.22, "st_orders": 6.0, "total_spend": 68.22, "total_orders": 6.0}, {"asin": "B0D5QV8B8V", "classification": "competitor", "brand": "1 MIDDLE ONE", "manufacturer": "1 MIDDLE ONE", "title": "1 MIDDLE ONE Floor Pillow Set of 2, Memory Foam Meditation Cushion, Floor Cushions for Adults Sitting, Large Square Seat Cushions for Yoga, Living Room, 20x20 Inch (Grey)", "image_url": "", "parent_asin": "B0DY4H6HXW", "package_qty": -1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 23.530000000000005, "pda_orders": 3.0, "st_spend": 44.22, "st_orders": 4.0, "total_spend": 67.75, "total_orders": 7.0}, {"asin": "B0BDHSMK1P", "classification": "competitor", "brand": "Codi", "manufacturer": "Codi", "title": "Codi Meditation Floor Pillow Set of 2, Large Pillows Seating for Adults and Kids, Bohemian Cushion for Fireplace Yoga Living Room Sitting, Memory Foam Added, 22x22 Inch Indigo Elephant", "image_url": "", "parent_asin": "B0BLFMLXZ2", "package_qty": 2, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 0.0, "pda_orders": 0.0, "st_spend": 45.83, "st_orders": 3.0, "total_spend": 45.83, "total_orders": 3.0}, {"asin": "B0CF211LWW", "classification": "competitor", "brand": "JKMAX", "manufacturer": "JKMAX", "title": "JKMAX 22 inches Floor Pillow for Adults - Large Meditation Cushion with Thick Foam & Soft Tufted Cover - Premium Outdoor Square Floor Cushion Seat - Yoga Pillows for Sitting On Floor - Light Gray", "image_url": "", "parent_asin": "B0CF21RKN5", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 0.0, "pda_orders": 0.0, "st_spend": 44.79, "st_orders": 5.0, "total_spend": 44.79, "total_orders": 5.0}, {"asin": "B0F6YNLXCF", "classification": "competitor", "brand": "HIGOGOGO", "manufacturer": "HIGOGOGO", "title": "HIGOGOGO 6\" Extra Thick Floor Pillow Cushion for Adults, Meditation Cushion Pillow, Large Square Floor Sitting, Tufted Corduroy Cover, for Tatami Living Room or Yoga, 22x22 Inch, 2Pack, Dark Grey", "image_url": "", "parent_asin": "B0F6YGP5YL", "package_qty": -1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 24.98, "pda_orders": 2.0, "st_spend": 19.62, "st_orders": 1.0, "total_spend": 44.6, "total_orders": 3.0}, {"asin": "B0CF215CJQ", "classification": "competitor", "brand": "JKMAX", "manufacturer": "JKMAX", "title": "JKMAX 2 Pcs High Density Foam Floor Pillow - Upgraded Large Pillows Seating for Adults - Outdoor Floor Cushion with Soft Tufted Cover - Yoga Pillows for Sitting On Floor - 22 Inch Light Gray", "image_url": "", "parent_asin": "B0CF21RKN5", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 0.0, "pda_orders": 0.0, "st_spend": 37.480000000000004, "st_orders": 1.0, "total_spend": 37.480000000000004, "total_orders": 1.0}, {"asin": "B0DV68LSWM", "classification": "competitor", "brand": "RuzRhyth", "manufacturer": "RuzRhyth", "title": "RuzRhyth Square Floor Pillows, Large Floor Cushion for Adults Kids, Meditation Floor Pillow Seating Cushion with Shredded Memory Foam and Silk Wadding, 20\"x20\"x5\" Dark Green", "image_url": "", "parent_asin": "B0DY22VN5F", "package_qty": -1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 0.0, "pda_orders": 0.0, "st_spend": 31.910000000000004, "st_orders": 4.0, "total_spend": 31.910000000000004, "total_orders": 4.0}, {"asin": "B0DBPM7QTM", "classification": "competitor", "brand": "BALAPET", "manufacturer": "BALAPET", "title": "BALAPET Floor Lounger Pillow,Foldable Soft Memory Foam Floor Pillow Portable 3-Piece Folding Pillow with Handle,Suit for Meditation,Playing,Yoga,Reading,Sleeping(Dark Gray)", "image_url": "", "parent_asin": "B0DBQJZ4FK", "package_qty": -1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 0.0, "pda_orders": 0.0, "st_spend": 26.48, "st_orders": 1.0, "total_spend": 26.48, "total_orders": 1.0}, {"asin": "B088BW667P", "classification": "competitor", "brand": "Florensi", "manufacturer": "Florensi", "title": "Florensi Meditation Mat Zabuton, Velvet Floor Cushions for Sitting, Meditation Cushions and Pillows with 100% Cotton Insert, Yoga Cushion for Women and Men, Pairs Perfectly with Yoga Bench", "image_url": "", "parent_asin": "B0CLYNG4SY", "package_qty": 1, "category": "Exercise & Fitness / Yoga / Foam Wedges", "pda_spend": 0.0, "pda_orders": 0.0, "st_spend": 17.33, "st_orders": 5.0, "total_spend": 17.33, "total_orders": 5.0}, {"asin": "B0DL5R3Z45", "classification": "competitor", "brand": "HOMBYS", "manufacturer": "HOMBYS", "title": "HOMBYS Floor Lounger Pillow Foldable and Tufted Design Long Floor Cushion for Yoga, Reading, Sleeping, Meditation, Elastic Band for Roll Up and Easy Storage, Machine Washable (Beige, 74\"x27\")", "image_url": "", "parent_asin": "B0D9PZBSPX", "package_qty": -1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 0.0, "pda_orders": 0.0, "st_spend": 17.27, "st_orders": 4.0, "total_spend": 17.27, "total_orders": 4.0}, {"asin": "B0DDPL7JJJ", "classification": "competitor", "brand": "Sunsleek", "manufacturer": "Sunsleek", "title": "Sunsleek Floor Pillow - 24x24x5 Inch Square Large Cushions for Adults, Pillows Seating for Meditation, Yoga, Luxurious Chenille Tufted, Perfect for Bench/Chair Cushion – Grey", "image_url": "", "parent_asin": "B0DDPFMRN3", "package_qty": -1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 0.0, "pda_orders": 0.0, "st_spend": 15.120000000000001, "st_orders": 1.0, "total_spend": 15.120000000000001, "total_orders": 1.0}, {"asin": "B0DPYGXP9X", "classification": "competitor", "brand": "1 MIDDLE ONE", "manufacturer": "1 MIDDLE ONE", "title": "1 MIDDLE ONE Floor Pillow Set of 2, Memory Foam Meditation Cushion, Floor Cushions for Adults Sitting, Large Square Seat Cushions for Yoga, Living Room, 20x20 Inch (Green)", "image_url": "", "parent_asin": "B0DY4H6HXW", "package_qty": -1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 4.08, "pda_orders": 1.0, "st_spend": 10.96, "st_orders": 1.0, "total_spend": 15.040000000000001, "total_orders": 2.0}, {"asin": "B09M49GQFH", "classification": "competitor", "brand": "Greendale Home Fashions", "manufacturer": "Greendale Home Fashions", "title": "Square Tufted Floor Pillow with Removable Cover, Cobalt, Medium (32\")", "image_url": "", "parent_asin": "B0C9NGNXK8", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 0.0, "pda_orders": 0.0, "st_spend": 14.95, "st_orders": 0.0, "total_spend": 14.95, "total_orders": 0.0}], "self_targets": [{"asin": "B0DM82RTNG", "classification": "self", "brand": "Intelligent Design", "manufacturer": "E&E Co. Ltd DBA JLA Home", "title": "Intelligent Design Large Floor Pillow for Adults Yoga or Meditation Cushion with Handle, Floor Cushion for Board Games, Lustrous Chenille Tufted, Handsewn Scalloped Edge, Azza, 24\" x 24\" x 5\" Ivory", "image_url": "", "parent_asin": "B0DBRK8C2M", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 157.16, "pda_orders": 29.0, "st_spend": 118.21000000000001, "st_orders": 16.0, "total_spend": 275.37, "total_orders": 45.0}, {"asin": "B0DM7XTRRQ", "classification": "self", "brand": "Intelligent Design", "manufacturer": "E&E Co. Ltd DBA JLA Home", "title": "Intelligent Design Large Floor Pillow for Adults Yoga or Meditation Cushion with Handle, Floor Cushion for Board Games, Lustrous Chenille Tufted, Handsewn Scalloped Edge, Azza, 24\" x 24\" x 5\" Blush", "image_url": "", "parent_asin": "B0DBRK8C2M", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 126.89999999999999, "pda_orders": 20.0, "st_spend": 116.71, "st_orders": 20.0, "total_spend": 243.60999999999999, "total_orders": 40.0}, {"asin": "B07CZYMVVX", "classification": "self", "brand": "Intelligent Design", "manufacturer": "E&E Co. Ltd DBA JLA Home", "title": "Intelligent Design Azza Floor Pillow, Large Cushions Sitting for Adults, Floor Pillow for Meditation or Yoga, Lustrous Chenille Tufted with Scalloped Edges for Bench/Chair Cushion, 20\"x20\"x5\" Ivory", "image_url": "", "parent_asin": "B0DBRK8C2M", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 36.02, "pda_orders": 7.0, "st_spend": 105.24, "st_orders": 13.0, "total_spend": 141.26, "total_orders": 20.0}, {"asin": "B07CZYQRMX", "classification": "self", "brand": "Intelligent Design", "manufacturer": "E&E Co. Ltd DBA JLA Home", "title": "Intelligent Design Azza Floor Pillow, Large Cushions Sitting for Adults, Floor Pillow for Meditation or Yoga, Lustrous Chenille Tufted with Scalloped Edges for Bench/Chair Cushion, 20\"x20\"x5\" Blush", "image_url": "", "parent_asin": "B0DBRK8C2M", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 50.769999999999996, "pda_orders": 7.0, "st_spend": 36.47, "st_orders": 4.0, "total_spend": 87.24, "total_orders": 11.0}, {"asin": "B07CZYHCD2", "classification": "self", "brand": "Intelligent Design", "manufacturer": "E&E Co. Ltd DBA JLA Home", "title": "Intelligent Design Azza Floor Pillow, Large Cushions Sitting for Adults, Floor Pillow for Meditation or Yoga, Lustrous Chenille Tufted with Scalloped Edges for Bench/Chair Cushion, 20\"x20\"x5\" Grey", "image_url": "", "parent_asin": "B0DBRK8C2M", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 0.23, "pda_orders": 0.0, "st_spend": 61.45, "st_orders": 5.0, "total_spend": 61.68, "total_orders": 5.0}, {"asin": "B0DM7YXKGR", "classification": "self", "brand": "Intelligent Design", "manufacturer": "E&E Co. Ltd DBA JLA Home", "title": "Intelligent Design Large Floor Pillow for Adults Yoga or Meditation Cushion with Handle, Floor Cushion for Board Games, Lustrous Chenille Tufted, Handsewn Scalloped Edge, Azza, 24\" x 24\" x 5\" Aqua", "image_url": "", "parent_asin": "B0DBRK8C2M", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 0.0, "pda_orders": 0.0, "st_spend": 45.37, "st_orders": 1.0, "total_spend": 45.37, "total_orders": 1.0}, {"asin": "B0DM7ZVBDW", "classification": "self", "brand": "Intelligent Design", "manufacturer": "E&E Co. Ltd DBA JLA Home", "title": "Intelligent Design Large Floor Pillow for Adults Yoga or Meditation Cushion with Handle, Floor Cushion for Board Games, Lustrous Chenille Tufted, Handsewn Scalloped Edge, Azza, 24\" x 24\" x 5\" Navy", "image_url": "", "parent_asin": "B0DBRK8C2M", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 24.84, "pda_orders": 1.0, "st_spend": 6.180000000000001, "st_orders": 0.0, "total_spend": 31.02, "total_orders": 1.0}, {"asin": "B07CZYFGK7", "classification": "self", "brand": "Intelligent Design", "manufacturer": "E&E Co. Ltd DBA JLA Home", "title": "Intelligent Design Edelia Foldable Poly Chenille Light Weight Lounge Floor Pillow Cushion Tufted Seat for Meditation, Game Playing, Yoga, Reading with Travel Wrap, 74x27\", Blush", "image_url": "", "parent_asin": "B0DGVZWNSB", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 0.0, "pda_orders": 0.0, "st_spend": 30.58, "st_orders": 2.0, "total_spend": 30.58, "total_orders": 2.0}, {"asin": "B07CZY1GCP", "classification": "self", "brand": "Intelligent Design", "manufacturer": "E&E Co. Ltd DBA JLA Home", "title": "Intelligent Design Azza Floor Pillow, Large Cushions Sitting for Adults, Floor Pillow for Meditation or Yoga, Lustrous Chenille Tufted with Scalloped Edges for Bench/Chair Cushion, 20\"x20\"x5\" Aqua", "image_url": "", "parent_asin": "B0DBRK8C2M", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 5.4, "pda_orders": 1.0, "st_spend": 10.63, "st_orders": 1.0, "total_spend": 16.03, "total_orders": 2.0}, {"asin": "B08346ZWQL", "classification": "self", "brand": "Intelligent Design", "manufacturer": "E&E Co. Ltd DBA JLA Home", "title": "Intelligent Design Azza Floor Pillow, Large Cushions Sitting for Adults, Floor Pillow for Meditation or Yoga, Lustrous Chenille Tufted with Scalloped Edges for Bench/Chair Cushion, 20\"x20\"x5\" Charcoal", "image_url": "", "parent_asin": "B0DBRK8C2M", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 3.2, "pda_orders": 0.0, "st_spend": 4.13, "st_orders": 1.0, "total_spend": 7.33, "total_orders": 1.0}, {"asin": "B0DBGYNTZX", "classification": "self", "brand": "Intelligent Design", "manufacturer": "E&E Co. Ltd DBA JLA Home", "title": "Intelligent Design Azza Floor Pillow, Large Seat Cushions for Adults, Floor Pillow for Meditation or Yoga, Lustrous Chenille Tufted, Scalloped Edges for Bench/Chair Cushion, 20\"x20\"x5\", Dusty Peach", "image_url": "", "parent_asin": "B0DBRK8C2M", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 3.24, "pda_orders": 0.0, "st_spend": 3.3600000000000003, "st_orders": 0.0, "total_spend": 6.6000000000000005, "total_orders": 0.0}, {"asin": "B09H2R3KDC", "classification": "self", "brand": "Intelligent Design", "manufacturer": "E&E Co. Ltd DBA JLA Home", "title": "Intelligent Design Edelia Foldable Poly Chenille Light Weight Lounge Floor Pillow Cushion Tufted Seat for Meditation, Game Playing, Yoga, Reading with Travel Wrap, 74x27, Gray", "image_url": "", "parent_asin": "B0DGVZWNSB", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 0.0, "pda_orders": 0.0, "st_spend": 6.15, "st_orders": 0.0, "total_spend": 6.15, "total_orders": 0.0}, {"asin": "B083473FJ9", "classification": "self", "brand": "Intelligent Design", "manufacturer": "E&E Co. Ltd DBA JLA Home", "title": "Intelligent Design Azza Floor Pillow, Large Cushions Sitting for Adults, Floor Pillow for Meditation or Yoga, Lustrous Chenille Tufted with Scalloped Edges for Bench/Chair Cushion, 20\"x20\"x5\" Navy", "image_url": "", "parent_asin": "B0DBRK8C2M", "package_qty": 1, "category": "Bedding / Decorative Pillows, Inserts & Covers / Floor Pillows & Cushions", "pda_spend": 2.25, "pda_orders": 0.0, "st_spend": 3.2800000000000002, "st_orders": 1.0, "total_spend": 5.53, "total_orders": 1.0}], "brands_top": [{"brand": "HIGOGOGO", "n_asins": 7, "spend": 1621.63, "orders": 175.0}, {"brand": "1 MIDDLE ONE", "n_asins": 9, "spend": 121.8, "orders": 10.0}, {"brand": "BALAPET", "n_asins": 4, "spend": 108.99, "orders": 7.0}, {"brand": "JKMAX", "n_asins": 3, "spend": 87.06, "orders": 6.0}, {"brand": "Codi", "n_asins": 3, "spend": 62.28, "orders": 3.0}, {"brand": "HOMBYS", "n_asins": 4, "spend": 51.25, "orders": 4.0}, {"brand": "Gfobip", "n_asins": 5, "spend": 38.88, "orders": 5.0}, {"brand": "RuzRhyth", "n_asins": 1, "spend": 31.910000000000004, "orders": 4.0}, {"brand": "Greendale Home Fashions", "n_asins": 3, "spend": 31.619999999999997, "orders": 0.0}, {"brand": "Retrospec", "n_asins": 4, "spend": 21.84, "orders": 2.0}], "clusters": [{"cluster": "B. Long-tail Premium Pair (长尾premium pair)", "n_asins": 8, "revenue": 849824.13, "units": 16470, "avg_price": 52.6665625, "rev_share": 0.42820944256841215}, {"cluster": "A. Head Defense (头部防御)", "n_asins": 3, "revenue": 448430.88, "units": 11870, "avg_price": 40.344166666666666, "rev_share": 0.22595538344535185}, {"cluster": "C. Color Specialists (颜色专属)", "n_asins": 8, "revenue": 311015.71, "units": 8445, "avg_price": 38.965520833333336, "rev_share": 0.15671461789290325}, {"cluster": "D. Budget Singles (单装入门款)", "n_asins": 7, "revenue": 281965.32, "units": 9965, "avg_price": 28.744166666666665, "rev_share": 0.142076705330577}, {"cluster": "E. 6-pack Premium (6件套高端组合)", "n_asins": 13, "revenue": 54914.3, "units": 458, "avg_price": 119.99, "rev_share": 0.02767022135748788}, {"cluster": "F. 2025 New Launch (2025新品线)", "n_asins": 6, "revenue": 38448.89, "units": 1012, "avg_price": 32.45027946127946, "rev_share": 0.019373629405267885}]};
+
+// Color swatch map
+const COLORS = {
+  grey:'#6B7280', beige:'#B8A285', yellow:'#F4C430', navy:'#1B3A6B',
+  turquoise:'#2EC4B6', turquoiseuois:'#2EC4B6', green:'#5BA85B',
+  pink:'#E58CB7', brown:'#6F4E37', red:'#C0392B', coffee:'#6F4E37',
+  white:'#E5E7EB', black:'#000000', mixed:'#9CA3AF'
+};
+const ROLE_TAGS = {
+  'broad-keyword hunter': {cls:'broad', label:'头部猎手'},
+  'long-tail specialist': {cls:'long', label:'长尾专家'},
+  'mixed': {cls:'mixed', label:'混合型'},
+  'low-volume / new': {cls:'mixed', label:'低流量'}
+};
+
+// Self targets
+const selfHTML = DATA.self_targets.map(t => `
+  <div class="comp-card self">
+    <div class="brand">${t.brand} <small style="font-weight: normal; color: var(--muted)">→ E&E Co. JLA Home (集团内品牌)</small></div>
+    <div class="asin">${t.asin}</div>
+    <div class="title">${t.title}</div>
+    <div class="stats">花费 $${t.total_spend.toFixed(2)} | 订单 ${t.total_orders}</div>
+  </div>`).join('');
+document.getElementById('self-list').innerHTML = selfHTML;
+
+// Top brands
+const brandsHTML = `<table class="budget-table">
+  <thead><tr><th>品牌</th><th>我们投放过的 ASIN 数</th><th>总花费</th><th>带来订单</th></tr></thead>
+  <tbody>${DATA.brands_top.map(b => `
+    <tr><td><strong>${b.brand}</strong></td><td>${b.n_asins}</td><td>$${b.spend.toFixed(2)}</td><td>${b.orders}</td></tr>`).join('')}
+  </tbody>
+</table>`;
+document.getElementById('brands-list').innerHTML = brandsHTML;
+
+// Competitor cards
+const compHTML = DATA.competitors.map(c => `
+  <div class="comp-card">
+    <div class="brand">${c.brand}</div>
+    <div class="asin">${c.asin}</div>
+    <div class="title">${c.title}</div>
+    <div class="stats">花费 $${(c.total_spend||0).toFixed(2)} | 订单 ${c.total_orders||0}</div>
+  </div>`).join('');
+document.getElementById('comp-list').innerHTML = compHTML;
+
+// Cluster groups
+const clusterMap = {};
+DATA.our.forEach(a => {
+  if (!clusterMap[a.cluster]) clusterMap[a.cluster] = [];
+  clusterMap[a.cluster].push(a);
+});
+const clusterOrder = DATA.clusters.map(c => c.cluster);
+const clustersHTML = clusterOrder.map(cName => {
+  const items = clusterMap[cName] || [];
+  const stat = DATA.clusters.find(c => c.cluster === cName);
+  return `
+    <div class="cluster-section">
+      <div class="cluster-header">
+        <h3>${cName}</h3>
+        <div class="stats">${stat.n_asins} 个 ASIN · $${(stat.revenue/1000).toFixed(0)}K (${(stat.rev_share*100).toFixed(1)}%)</div>
+      </div>
+      <div class="cluster-grid">${items.map(a => {
+        const swatchColor = COLORS[(a.color||'').toLowerCase()] || COLORS.mixed;
+        const roleTag = ROLE_TAGS[a.role] || {cls:'mixed', label:a.role};
+        return `<div class="asin-card">
+          <div class="header-row">
+            <span class="swatch" style="background: ${swatchColor}" title="${a.color}"></span>
+            <span class="asin">${a.ASIN}</span>
+            <span class="price">$${(a.avg_price||0).toFixed(0)}</span>
+          </div>
+          <div class="sku">${a.SKU} · ${a.color || '?'} · ${a.pack}-pack ${a.material || ''}</div>
+          <div class="rev">$${(a.revenue/1000).toFixed(1)}K</div>
+          <div class="meta">${a.units} 件 · 占SPU ${(a.rev_share*100).toFixed(1)}%</div>
+          <span class="role-tag ${roleTag.cls}">${roleTag.label}</span>
+        </div>`;
+      }).join('')}</div>
+    </div>`;
+}).join('');
+document.getElementById('cluster-list').innerHTML = clustersHTML;
+
+// Tactics list
+const TACTICS = [
+  {cluster: 'A. Head Defense (头部防御)', color: '#1F4E78',
+   asins: 'B09C1ZGB9P (Grey Pair $44.80), B09C1ZNGNY (Grey Single $26.91), B09C1WWWDR (Yellow Pair $49.32)',
+   pool: 'floor cushions, floor pillow, floor cushion, floor pillows, floor cushions for adults, floor pillows for adults',
+   bid: '$0.70-0.90, fixed bid + 首页 placement +20-50%',
+   match: 'SP exact match',
+   budget: '$5,000/月 (Tier 1)',
+   kpi: 'Click share 维持 9-13%, best_score 维持 1, ACOS ≤25%'},
+  {cluster: 'B. Long-tail Premium Pair (长尾premium pair)', color: '#E91E63',
+   asins: 'B0B195QT96 (Grey), B0BW31QLDW (Beige), B0BHZF2RPL (Yellow), B09C21BQRG (Navy), B0B1954RV5 (Navy), B0BKH6JY2Z (Brown), B0BFDHCJR4 (Green), B09C1XS8DF (Beige) — 全部 2-pack $49-55',
+   pool: 'meditation cushion, meditation pillow, meditation floor pillow, zabuton, japanese floor cushion, floor seat cushion, floor sitting cushions, round floor cushion, square floor cushions',
+   bid: '$0.40-0.70, 词组匹配 + 自动 loose',
+   match: 'SP phrase + auto-loose',
+   budget: '$2,500 (Tier 2 - meditation 专攻) + $900 (Tier 5 - 长尾色系)',
+   kpi: 'meditation cushion 购买份额 3% → 6%, narrow 词 click_share 提升'},
+  {cluster: 'C. Color Specialists (颜色专属)', color: '#2E7D32',
+   asins: 'B0B196MNHP (Turq), B0BW2ZGLPH (Beige), B09C1XLGQL (Turq), B0BKH6596R (Brown), B0BYQNSCMJ (Pink), B0BFDJTZ8V (Green), B0BYQ9BZ9H (Pink), B0B19576KD (Turq)',
+   pool: 'orange floor pillows, navy blue floor pillows, large blue floor pillows, pink floor cushions, turquoise floor pillow, brown floor cushion (按颜色匹配 ASIN)',
+   bid: '$0.80-1.00, exact match',
+   match: 'SP exact (颜色词必须精确)',
+   budget: '$900 (Tier 5 子集)',
+   kpi: '宝藏词 ROAS 维持 25x+, 颜色词份额提升'},
+  {cluster: 'D. Budget Singles (单装入门款)', color: '#F57C00',
+   asins: 'B09C1WYJM5 (Navy), B09C1YC8B2 (Beige), B0B195GWFB (Grey), B0B1943X6M (Navy), B09C1XJ7K8 (Turq), B09C1YSTDD (Yellow), B0BHZFXGC8 (Yellow) — 全部 single $27-30',
+   pool: 'cheap floor pillow, single floor cushion, small floor pillow, dorm floor cushion',
+   bid: '$0.30-0.50, 广泛匹配',
+   match: 'SP broad + auto',
+   budget: '$700 (Tier 5 子集)',
+   kpi: '吃低价位需求, ACOS ≤30%'},
+  {cluster: 'E. 6-pack Premium (6件套高端组合)', color: '#7B1FA2',
+   asins: '13 个 B0D32* / B0D31 6-pack 系列 ($119.99)',
+   pool: 'classroom floor cushions, school floor pillows, bulk floor cushion set, daycare cushions',
+   bid: '$0.50-0.80, 广泛匹配先探索 (当前 0 SQP 流量)',
+   match: '★ 暂停 PPC，先 listing 优化',
+   budget: '$200/月 (待 listing 优化后再加)',
+   kpi: '先把 SQP 流量从 0 跑出来'},
+  {cluster: 'F. 2025 New Launch (2025新品线)', color: '#607D8B',
+   asins: 'B0DYG2ZSGD, B0DYG3H118 (gusset), B0FQMR2VT7, B0FQNBCPVL (fur), B0D3WG47DQ, B0D3WS1XW4 (Ovya)',
+   pool: 'thick floor cushion, fur floor cushion, gusset floor pillow, square floor cushion 22x22 (新品线特征词)',
+   bid: '★ 不上 PPC',
+   match: '先 Vine + Project X 起评论',
+   budget: '$0/月（评论建立后再上）',
+   kpi: '6 个月内 30+ 评论达标'},
+];
+
+const tacticsHTML = TACTICS.map(t => `
+  <div style="background: white; border-left: 6px solid ${t.color}; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: var(--shadow);">
+    <h3 style="color: ${t.color}; margin-bottom: 8px;">${t.cluster}</h3>
+    <div style="display: grid; grid-template-columns: 120px 1fr; gap: 8px 16px; font-size: 13px; line-height: 1.6;">
+      <div style="color: var(--muted); font-weight: 600;">ASIN</div><div>${t.asins}</div>
+      <div style="color: var(--muted); font-weight: 600;">流量池</div><div><div class="kw-pool" style="display: inline; padding: 0; background: transparent;">${t.pool.split(',').map(k => `<span class="kw">${k.trim()}</span>`).join('')}</div></div>
+      <div style="color: var(--muted); font-weight: 600;">Bid</div><div>${t.bid}</div>
+      <div style="color: var(--muted); font-weight: 600;">匹配方式</div><div>${t.match}</div>
+      <div style="color: var(--muted); font-weight: 600;">预算</div><div><strong>${t.budget}</strong></div>
+      <div style="color: var(--muted); font-weight: 600;">KPI</div><div>${t.kpi}</div>
+    </div>
+  </div>`).join('');
+document.getElementById('tactics-list').innerHTML = tacticsHTML;
+
+// smooth scroll
+document.querySelectorAll('nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+</script>
+</body>
+</html>
