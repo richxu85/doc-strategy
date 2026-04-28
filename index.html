@@ -154,6 +154,9 @@ footer { text-align: center; padding: 30px; color: var(--muted); font-size: 12px
     <li><a href="#content">内容产出</a></li>
     <li><a href="#seasonal">季节策略</a></li>
     <li><a href="#action">立即行动</a></li>
+    <li><a href="#algorithm" style="background:#FFF8E1;color:#C00000;font-weight:bold;">🧮 算法整合 (v2)</a></li>
+    <li><a href="#tier-acos" style="background:#FFF8E1;color:#C00000;font-weight:bold;">11层 ACOS 矩阵 (v2)</a></li>
+    <li><a href="#weekly-review" style="background:#FFF8E1;color:#C00000;font-weight:bold;">周度 Review (v2)</a></li>
   </ul>
 </nav>
 
@@ -460,6 +463,158 @@ footer { text-align: center; padding: 30px; color: var(--muted); font-size: 12px
       <li><span class="badge low">P3</span><div><strong>每月清理 PDA 0 单目标</strong>: 维护 PDA winners 列表 (top 10)，不在列表的快速暂停</div></li>
     </ul>
   </section>
+  <section id="algorithm" style="background: linear-gradient(135deg, #FFF8E1 0%, #FFFFFF 100%); border: 2px solid #F57C00;">
+    <div style="display:inline-block;background:#C00000;color:white;padding:4px 12px;border-radius:4px;font-size:11px;font-weight:600;margin-bottom:12px;">v2 NEW · 算法整合层</div>
+    <h2>🧮 Clare 自动化算法 → SPU Benchmark</h2>
+    <div class="sub">把 Clare 的每周广告调整算法 (clare-cs/automation) 落到 DOC SPU 上, 算出官方 ACOS 目标</div>
+
+    <div class="kpi-grid" style="margin-bottom: 20px;">
+      <div class="kpi success"><div class="label">定价毛利率</div><div class="value">41.84%</div><div class="delta">高于平均, 有充足 ACOS 空间</div></div>
+      <div class="kpi"><div class="label">广告比例指标</div><div class="value">11.56%</div><div class="delta">算法允许的目标广告占比</div></div>
+      <div class="kpi success"><div class="label">实际/指标比</div><div class="value">0.89</div><div class="delta">⚡ &lt;1 = 略微欠投, 可加码</div></div>
+      <div class="kpi warning"><div class="label">★ SPU acos_target SP/SB</div><div class="value">25.54%</div><div class="delta">vs 当前 22.65% — 可放宽 +2.89pp</div></div>
+      <div class="kpi"><div class="label">SD acos_target</div><div class="value">19.64%</div><div class="delta">SD 转化路径长, 要求更紧</div></div>
+      <div class="kpi danger"><div class="label">硬天花板 (effective_margin)</div><div class="value">41.84%</div><div class="delta">长期超过此值 = 无利润</div></div>
+    </div>
+
+    <h3 style="color: var(--primary); margin-bottom: 8px;">算法计算链路</h3>
+    <table class="budget-table" style="margin-bottom: 20px;">
+      <thead><tr><th>步骤</th><th>公式 / 输入</th><th>结果</th><th>含义</th></tr></thead>
+      <tbody>
+        <tr><td>商品运营态</td><td>维护 + 一般</td><td>initial_ratio = 0.03</td><td>来自 prepare_erp_data.py 的状态×级别表</td></tr>
+        <tr><td>定价毛利率</td><td>(销售额 + 各项成本) / 销售额</td><td>41.84%</td><td>纯产品盈利能力</td></tr>
+        <tr><td>marketing_gross_margin</td><td>定价毛利 - |other_factor|^1.5</td><td>38.04%</td><td>扣除营销税后</td></tr>
+        <tr><td>adjusted_processing_ratio</td><td>(margin - initial) × 0.33</td><td>11.56%</td><td>调整后的目标广告占比</td></tr>
+        <tr><td>广告比例指标</td><td>adjusted × inv_factor</td><td>11.56%</td><td>★ 算法允许的目标广告/销售比</td></tr>
+        <tr><td>实际广告比例</td><td>广告花费 / 销售额</td><td>10.33%</td><td>当前实际状态</td></tr>
+        <tr><td>实际/指标比</td><td>10.33% / 11.56%</td><td>0.893</td><td>⚡ 欠投状态, 算法允许放松</td></tr>
+        <tr><td>type_acos (历史2周)</td><td>cost-weighted ACOS</td><td>22.65%</td><td>近期实际表现</td></tr>
+        <tr><td>var_factor</td><td>(cur/type/ratio)^0.3</td><td>1.034</td><td>欠投 → factor 略高 → 允许放松</td></tr>
+        <tr style="background:#FFF8E1;"><td><strong>SP/SB acos_target</strong></td><td>type_acos × var_factor × 1.09</td><td><strong>25.54%</strong></td><td>★ 算法对 DOC SP/SB 的官方目标</td></tr>
+        <tr><td>SD acos_target</td><td>(type_acos × var_factor + type_acos × 0.7) / 2</td><td>19.64%</td><td>SD 更保守</td></tr>
+      </tbody>
+    </table>
+
+    <div class="alert" style="background: #E8F5E9; border-color: #2E7D32;">
+      <h3 style="color: #2E7D32;">⚡ 关键洞察</h3>
+      <p>之前我建议的 22-23% ACOS 目标偏保守。<strong>Clare 算法基于 DOC 的高毛利 + 欠投状态, 实际允许 ACOS 上调至 25.54%</strong>。这意味着我们可以加大投放抢占 meditation cushion 等市场缺口而不损盈利。同时, 41.84% 是 effective_margin 硬天花板 — 任何 campaign 长期接近此值都会被算法自动降 bid。</p>
+    </div>
+
+    <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 8px;">OOB 日内压缩公式</h3>
+    <p style="font-size: 13px; margin-bottom: 12px;">当 campaign 当日预算耗尽时, 算法会按以下逻辑动态调整：</p>
+    <table class="budget-table">
+      <thead><tr><th>实际/指标比</th><th>overcap = max(ratio, 1)</th><th>effective_margin</th><th>含义</th></tr></thead>
+      <tbody>
+        <tr><td>0.70</td><td>1.00</td><td>41.84%</td><td>欠投, 不压缩 (DOC 当前状态)</td></tr>
+        <tr style="background:#E8F5E9;"><td>0.89</td><td>1.00</td><td>41.84%</td><td>⚡ 当前 → 不压缩 + 鼓励放松</td></tr>
+        <tr><td>1.00</td><td>1.00</td><td>41.84%</td><td>刚好达标</td></tr>
+        <tr style="background:#FFF8E1;"><td>1.15</td><td>1.15</td><td>36.38%</td><td>超投 15%, 阈值压缩 13%</td></tr>
+        <tr style="background:#FFEBEE;"><td>1.50</td><td>1.50</td><td>27.89%</td><td>超投 50%, 严格收紧</td></tr>
+        <tr style="background:#FFEBEE;"><td>2.00</td><td>2.00</td><td>20.92%</td><td>超投 100%, 几乎不允许加价</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="tier-acos" style="background: linear-gradient(135deg, #FFF8E1 0%, #FFFFFF 100%); border: 2px solid #F57C00;">
+    <div style="display:inline-block;background:#C00000;color:white;padding:4px 12px;border-radius:4px;font-size:11px;font-weight:600;margin-bottom:12px;">v2 NEW · 11层 ACOS 矩阵</div>
+    <h2>🎯 11 Tier × ACOS Target 矩阵</h2>
+    <div class="sub">campaign_acos_target = SPU_acos_target × role_multiplier · 策略层 × 算法基线</div>
+
+    <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:18px;font-size:13px;">
+      <strong>Role Multiplier 含义</strong><br>
+      <span style="color:#2E7D32">• &lt;1.0 高效阵地</span> (品牌词 / PDA / 长尾宝藏 / retargeting), ACOS 应低于平均<br>
+      <span style="color:#1F4E78">• =1.0 中性</span> (Auto Discovery / SD), 与 SPU baseline 持平<br>
+      <span style="color:#F57C00">• &gt;1.0 走量阵地</span> (头部大词 / SB 新买家), 容忍较高 ACOS 换曝光与新客
+    </div>
+
+    <table class="budget-table">
+      <thead><tr>
+        <th>Tier</th><th>名称</th><th>类型</th><th>Role Mul</th>
+        <th>★ Target ACOS</th><th>月预算</th><th>预算占比</th><th>预期月销售</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Tier 0</td><td>Brand Defense</td><td>SP</td><td>0.45×</td><td>11.49%</td><td>$50</td><td>0.3%</td><td>$435</td></tr>
+        <tr style="background:#FFF8E1;"><td><strong>Tier 1</strong></td><td><strong>Head Defense</strong></td><td>SP</td><td>1.05×</td><td><strong>26.82%</strong></td><td><strong>$5,000</strong></td><td>27.8%</td><td>$18,645</td></tr>
+        <tr style="background:#E8F5E9;"><td><strong>Tier 2</strong></td><td><strong>Meditation Attack ★</strong></td><td>SP</td><td>0.85×</td><td><strong>21.71%</strong></td><td><strong>$2,500</strong></td><td>13.9%</td><td>$11,516</td></tr>
+        <tr><td>Tier 3</td><td>Auto Discovery</td><td>SP</td><td>1.00×</td><td>25.54%</td><td>$4,000</td><td>22.2%</td><td>$15,662</td></tr>
+        <tr style="background:#E8F5E9;"><td>Tier 4</td><td>PDA Competitors</td><td>SP</td><td>0.85×</td><td>21.71%</td><td>$2,000</td><td>11.1%</td><td>$9,213</td></tr>
+        <tr style="background:#E8F5E9;"><td><strong>Tier 5</strong></td><td><strong>Long-tail Color/Style</strong></td><td>SP</td><td>0.65×</td><td><strong>16.60%</strong></td><td>$1,800</td><td>10.0%</td><td>$10,843</td></tr>
+        <tr><td>Tier 6</td><td>SD Retargeting</td><td>SD</td><td>1.00×</td><td>19.64%</td><td>$1,500</td><td>8.3%</td><td>$7,637</td></tr>
+        <tr style="background:#FFF8E1;"><td>SB</td><td>Brand Video</td><td>SB</td><td>1.20×</td><td>30.65%</td><td>$650</td><td>3.6%</td><td>$2,121</td></tr>
+        <tr><td>Reserve</td><td>Testing</td><td>SP</td><td>1.00×</td><td>25.54%</td><td>$500</td><td>2.8%</td><td>$1,958</td></tr>
+        <tr style="background:#1F4E78;color:white;font-weight:bold;">
+          <td colspan="3">SPU 整体 (weighted rollup)</td>
+          <td>—</td>
+          <td>23.70%</td>
+          <td>$17,000</td>
+          <td>100%</td>
+          <td>$78,029</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="kpi-grid" style="margin-top: 20px;">
+      <div class="kpi"><div class="label">策略层 weighted ACOS</div><div class="value">23.70%</div><div class="delta">Σ(budget × acos) / Σ(budget)</div></div>
+      <div class="kpi success"><div class="label">算法 SP/SB baseline</div><div class="value">25.54%</div><div class="delta">天花板, 我们留 1.84pp 安全垫</div></div>
+      <div class="kpi"><div class="label">vs 当前 22.65%</div><div class="value">+1.05pp</div><div class="delta">允许加大投放</div></div>
+      <div class="kpi success"><div class="label">预期年广告销售</div><div class="value">$936K</div><div class="delta">vs 当前 $907K, +3.2%</div></div>
+    </div>
+
+    <div class="alert" style="background: #E3F2FD; border-color: #1565C0;">
+      <h3 style="color: #1565C0;">📐 验证逻辑</h3>
+      <p>每个 Tier 的 target ACOS 加权 ($) 后, 整体 SPU 的 weighted ACOS = <strong>23.70%</strong>, 比算法允许的 25.54% 紧 1.84pp。这意味着我们的策略层比算法 baseline 更保守一点 (留安全垫), 同时仍然比当前 22.65% 宽松, 允许加投放。如果某个 Tier 实际表现严重偏离自己的 target, weighted rollup 会立刻反映到 SPU 总数, 形成自我校验。</p>
+    </div>
+  </section>
+
+  <section id="weekly-review" style="background: linear-gradient(135deg, #FFF8E1 0%, #FFFFFF 100%); border: 2px solid #F57C00;">
+    <div style="display:inline-block;background:#C00000;color:white;padding:4px 12px;border-radius:4px;font-size:11px;font-weight:600;margin-bottom:12px;">v2 NEW · 周度 Review</div>
+    <h2>📊 Weekly Campaign Review 模板</h2>
+    <div class="sub">每周拉广告报表后填入实际值, 系统自动判断健康状态</div>
+
+    <h3 style="color: var(--primary); margin-bottom: 12px;">Status 判定逻辑</h3>
+    <div class="flex-grid" style="margin-bottom: 18px;">
+      <div style="background:#E8F5E9;padding:14px;border-radius:8px;border-left:5px solid #2E7D32;">
+        <strong style="color:#2E7D32;">🟢 绿 — 大幅好于目标</strong><br>
+        <span style="font-size:13px;">actual_acos ≤ target × 0.85<br>建议: 加预算扩量</span>
+      </div>
+      <div style="background:#FFF8E1;padding:14px;border-radius:8px;border-left:5px solid #F57C00;">
+        <strong style="color:#F57C00;">🟡 黄 — 在合理区间</strong><br>
+        <span style="font-size:13px;">target × 0.85 &lt; actual ≤ target × 1.10<br>建议: 维持, 不动</span>
+      </div>
+      <div style="background:#FFEBEE;padding:14px;border-radius:8px;border-left:5px solid #C00000;">
+        <strong style="color:#C00000;">🔴 红 — 超 10% 警戒线</strong><br>
+        <span style="font-size:13px;">actual &gt; target × 1.10<br>建议: 降 bid 或缩预算, 排查 listing</span>
+      </div>
+      <div style="background:#F5F5F5;padding:14px;border-radius:8px;border-left:5px solid #9E9E9E;">
+        <strong style="color:#616161;">⚫ 灰 — 数据不足</strong><br>
+        <span style="font-size:13px;">本周 clicks &lt; 30<br>建议: 至少 2 周后再判定</span>
+      </div>
+    </div>
+
+    <h3 style="color: var(--primary); margin-bottom: 12px;">每周排查优先级</h3>
+    <table class="budget-table">
+      <thead><tr><th>Tier</th><th>名称</th><th>Target ACOS</th><th>红色警戒线</th><th>红线后排查</th></tr></thead>
+      <tbody>
+        <tr><td>Tier 0</td><td>Brand Defense</td><td>11.49%</td><td>&gt; 12.64%</td><td>极少触发, 触发说明品牌词被竞品抢位严重</td></tr>
+        <tr><td>Tier 1</td><td>Head Defense</td><td>26.82%</td><td>&gt; 29.50%</td><td>头部大词 CPC 上涨 / Listing 转化下降 / 竞品 deal</td></tr>
+        <tr><td>Tier 2</td><td>Meditation Attack</td><td>21.71%</td><td>&gt; 23.88%</td><td>★ meditation 词关键词不准 / Listing 缺 meditation 语义</td></tr>
+        <tr><td>Tier 3</td><td>Auto Discovery</td><td>25.54%</td><td>&gt; 28.10%</td><td>auto 跑偏到不相关词, 加 negative</td></tr>
+        <tr><td>Tier 4</td><td>PDA Competitors</td><td>21.71%</td><td>&gt; 23.88%</td><td>PDA 目标 ASIN 选错 (self 或低相关), 替换 winners</td></tr>
+        <tr><td>Tier 5</td><td>Long-tail Color/Style</td><td>16.60%</td><td>&gt; 18.26%</td><td>★ 宝藏词意外失效, 检查季节性 / 竞品介入</td></tr>
+        <tr><td>Tier 6</td><td>SD Retargeting</td><td>19.64%</td><td>&gt; 21.60%</td><td>受众池太宽, 收紧 audience criteria</td></tr>
+        <tr><td>SB</td><td>Brand Video</td><td>30.65%</td><td>&gt; 33.72%</td><td>视频 CTR 低 / Headline 文案弱</td></tr>
+      </tbody>
+    </table>
+
+    <div class="alert" style="margin-top: 18px; background: #E8F5E9; border-color: #2E7D32;">
+      <h3 style="color: #2E7D32;">🎯 SPU 滚动校验</h3>
+      <p>每周把 8 个非保留 Tier 的实际 spend × actual_acos 加权, 看 SPU 整体 weighted ACOS 是否在 [22.0%, 25.5%] 区间内。<br>
+      • 低于 22.0% → 投放不足, 没吃到机会, 加预算<br>
+      • 22.0%~25.5% → 健康, 维持<br>
+      • 高于 25.5% → 已逼近算法天花板, 需要找出主要偏差 Tier 进行调整</p>
+    </div>
+  </section>
+
 </main>
 
 <footer>
